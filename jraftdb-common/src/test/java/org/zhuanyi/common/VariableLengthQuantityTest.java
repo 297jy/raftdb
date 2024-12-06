@@ -15,9 +15,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zhuanyi.utils;
+package org.zhuanyi.common;
 
 import org.testng.annotations.Test;
+import org.zhuanyi.common.SliceOutput;
+import org.zhuanyi.common.Slices;
+import org.zhuanyi.common.VariableLengthQuantity;
 
 import static org.testng.Assert.assertEquals;
 

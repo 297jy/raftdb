@@ -15,14 +15,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zhuanyi.utils;
+package org.zhuanyi.common;
 
 import org.testng.annotations.Test;
+import org.zhuanyi.common.Slice;
+import org.zhuanyi.common.Slices;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
-import static org.zhuanyi.utils.SliceComparator.SLICE_COMPARATOR;
+import static org.zhuanyi.common.SliceComparator.SLICE_COMPARATOR;
 
 public class SliceComparatorTest {
     @Test

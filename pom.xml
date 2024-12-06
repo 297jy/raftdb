@@ -12,6 +12,7 @@
         <module>jraftdb-common</module>
         <module>jraftdb-core</module>
         <module>jraftdb-api</module>
+        <module>jraftdb-engine</module>
     </modules>
 
     <properties>
@@ -33,6 +34,30 @@
                 <artifactId>testng</artifactId>
                 <scope>test</scope>
                 <version>6.10</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.zhuanyi</groupId>
+                <artifactId>jraftdb-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.zhuanyi</groupId>
+                <artifactId>jraftdb-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.zhuanyi</groupId>
+                <artifactId>jraftdb-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.zhuanyi</groupId>
+                <artifactId>jraftdb-engine</artifactId>
+                <version>${project.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zhuanyi.utils;
+package org.zhuanyi.common;
 
 public final class SizeOf {
     public static final byte SIZE_OF_BYTE = 1;

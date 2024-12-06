@@ -15,10 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zhuanyi.utils;
+package org.zhuanyi.common;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.zhuanyi.common.PureJavaCrc32C;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
@@ -27,8 +28,8 @@ import java.util.function.Function;
 import static java.nio.charset.StandardCharsets.US_ASCII;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
-import static org.zhuanyi.utils.PureJavaCrc32C.mask;
-import static org.zhuanyi.utils.PureJavaCrc32C.unmask;
+import static org.zhuanyi.common.PureJavaCrc32C.mask;
+import static org.zhuanyi.common.PureJavaCrc32C.unmask;
 
 public class PureJavaCrc32CTest {
 
