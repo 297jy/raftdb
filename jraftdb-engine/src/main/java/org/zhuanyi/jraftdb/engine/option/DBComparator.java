@@ -15,22 +15,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zhuanyi.jraftdb.engine.table.iterator;
+package org.zhuanyi.jraftdb.engine.option;
 
-import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
 
-import java.util.Map.Entry;
-
-public interface SeekingIterator<K, V>
-        extends PeekingIterator<Entry<K, V>>
+/**
+ * @author <a href="http://hiramchirino.com">Hiram Chirino</a>
+ */
+public interface DBComparator
+        extends Comparator<byte[]>
 {
-    /**
-     * Repositions the iterator so the beginning of this block.
-     */
-    void seekToFirst();
+    String name();
 
     /**
-     * Repositions the iterator so the key of the next BlockElement returned greater than or equal to the specified targetKey.
+     * If {@code start < limit}, returns a short key in [start,limit).
+     * Simple comparator implementations should return start unchanged,
      */
-    void seek(K targetKey);
+    byte[] findShortestSeparator(byte[] start, byte[] limit);
+
+    /**
+     * returns a 'short key' where the 'short key' is greater than or equal to key.
+     * Simple comparator implementations should return key unchanged,
+     */
+    byte[] findShortSuccessor(byte[] key);
 }

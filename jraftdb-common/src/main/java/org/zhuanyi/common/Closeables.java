@@ -15,13 +15,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zhuanyi.jraftdb.engine.table.iterator;
+package org.zhuanyi.common;
 
-import java.util.Map.Entry;
+import java.io.Closeable;
+import java.io.IOException;
 
-public interface SeekingIterable<K, V>
-        extends Iterable<Entry<K, V>>
-{
-    @Override
-    SeekingIterator<K, V> iterator();
+public final class Closeables {
+    private Closeables() {
+    }
+
+    public static void closeQuietly(Closeable closeable) {
+        if (closeable == null) {
+            return;
+        }
+        try {
+            closeable.close();
+        } catch (IOException ignored) {
+        }
+    }
 }

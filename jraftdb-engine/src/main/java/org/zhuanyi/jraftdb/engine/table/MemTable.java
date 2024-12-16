@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2011 the original author or authors.
+ * See the notice.md file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.zhuanyi.jraftdb.engine.table;
 
 import com.google.common.collect.Iterators;
@@ -5,31 +22,23 @@ import com.google.common.collect.PeekingIterator;
 import org.zhuanyi.common.Slice;
 import org.zhuanyi.jraftdb.engine.comparator.InternalKeyComparator;
 import org.zhuanyi.jraftdb.engine.data.*;
-import org.zhuanyi.jraftdb.engine.table.iterator.InternalIterator;
-import org.zhuanyi.jraftdb.engine.table.iterator.SeekingIterable;
-import org.zhuanyi.jraftdb.engine.table.iterator.SeekingIterator;
+import org.zhuanyi.jraftdb.engine.iterator.InternalIterator;
+import org.zhuanyi.jraftdb.engine.iterator.SeekingIterable;
 
-import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static java.util.Objects.requireNonNull;
 import static org.zhuanyi.common.SizeOf.SIZE_OF_LONG;
 
-public class MemTable implements SeekingIterable<InternalKey, Slice> {
-
-    // ConcurrentSkipListMap是如何实现无锁并发的
+public class MemTable
+        implements SeekingIterable<InternalKey, Slice> {
     private final ConcurrentSkipListMap<InternalKey, Slice> table;
-
     private final AtomicLong approximateMemoryUsage = new AtomicLong();
 
     public MemTable(InternalKeyComparator internalKeyComparator) {
         table = new ConcurrentSkipListMap<>(internalKeyComparator);
-    }
-
-    @Override
-    public SeekingIterator<InternalKey, Slice> iterator() {
-        return null;
     }
 
     public boolean isEmpty() {
@@ -40,14 +49,6 @@ public class MemTable implements SeekingIterable<InternalKey, Slice> {
         return approximateMemoryUsage.get();
     }
 
-    /**
-     * 插入一个数据
-     *
-     * @param sequenceNumber
-     * @param valueType
-     * @param key
-     * @param value
-     */
     public void add(long sequenceNumber, ValueType valueType, Slice key, Slice value) {
         requireNonNull(valueType, "valueType is null");
         requireNonNull(key, "key is null");
@@ -59,17 +60,11 @@ public class MemTable implements SeekingIterable<InternalKey, Slice> {
         approximateMemoryUsage.addAndGet(key.length() + SIZE_OF_LONG + value.length());
     }
 
-    /**
-     * 查询一个数据
-     *
-     * @param key
-     * @return
-     */
     public LookupResult get(LookupKey key) {
         requireNonNull(key, "key is null");
 
         InternalKey internalKey = key.getInternalKey();
-        Map.Entry<InternalKey, Slice> entry = table.ceilingEntry(internalKey);
+        Entry<InternalKey, Slice> entry = table.ceilingEntry(internalKey);
         if (entry == null) {
             return null;
         }
@@ -85,9 +80,14 @@ public class MemTable implements SeekingIterable<InternalKey, Slice> {
         return null;
     }
 
-    public class MemTableIterator implements InternalIterator {
+    @Override
+    public MemTableIterator iterator() {
+        return new MemTableIterator();
+    }
 
-        private PeekingIterator<Map.Entry<InternalKey, Slice>> iterator;
+    public class MemTableIterator
+            implements InternalIterator {
+        private PeekingIterator<Entry<InternalKey, Slice>> iterator;
 
         public MemTableIterator() {
             iterator = Iterators.peekingIterator(table.entrySet().iterator());
@@ -109,14 +109,14 @@ public class MemTable implements SeekingIterable<InternalKey, Slice> {
         }
 
         @Override
-        public Map.Entry<InternalKey, Slice> peek() {
-            Map.Entry<InternalKey, Slice> entry = iterator.peek();
+        public InternalEntry peek() {
+            Entry<InternalKey, Slice> entry = iterator.peek();
             return new InternalEntry(entry.getKey(), entry.getValue());
         }
 
         @Override
-        public Map.Entry<InternalKey, Slice> next() {
-            Map.Entry<InternalKey, Slice> entry = iterator.next();
+        public InternalEntry next() {
+            Entry<InternalKey, Slice> entry = iterator.next();
             return new InternalEntry(entry.getKey(), entry.getValue());
         }
 

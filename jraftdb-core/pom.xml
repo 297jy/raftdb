@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>org.zhuanyi</groupId>
-            <artifactId>jraftdb-core</artifactId>
+            <artifactId>jraftdb-engine</artifactId>
         </dependency>
     </dependencies>
 

@@ -15,7 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zhuanyi.jraftdb.engine.table.iterator;
+package org.zhuanyi.jraftdb.engine.iterator;
+
 
 import org.zhuanyi.common.Slice;
 import org.zhuanyi.jraftdb.engine.data.InternalKey;
@@ -26,6 +27,5 @@ import org.zhuanyi.jraftdb.engine.data.InternalKey;
  * @author <a href="http://hiramchirino.com">Hiram Chirino</a>
  */
 public interface InternalIterator
-        extends SeekingIterator<InternalKey, Slice>
-{
+        extends SeekingIterator<InternalKey, Slice> {
 }
