@@ -1,8 +1,8 @@
 package org.zhuanyi.jraftdb.engine.data;
 
-import org.zhuanyi.common.Slice;
-import org.zhuanyi.common.SliceOutput;
-import org.zhuanyi.common.Slices;
+import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.SliceOutput;
+import org.zhuanyi.jraftdb.engine.utils.Slices;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static java.nio.charset.StandardCharsets.UTF_8;

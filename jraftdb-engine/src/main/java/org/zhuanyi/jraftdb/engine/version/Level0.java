@@ -18,7 +18,7 @@
 package org.zhuanyi.jraftdb.engine.version;
 
 
-import org.zhuanyi.common.Slice;
+import org.zhuanyi.jraftdb.engine.utils.Slice;
 import org.zhuanyi.jraftdb.engine.comparator.InternalKeyComparator;
 import org.zhuanyi.jraftdb.engine.comparator.UserComparator;
 import org.zhuanyi.jraftdb.engine.data.InternalKey;
@@ -46,23 +46,19 @@ import static org.zhuanyi.jraftdb.engine.data.ValueType.VALUE;
 
 // todo this class should be immutable
 public class Level0
-        implements SeekingIterable<InternalKey, Slice>
-{
+        implements SeekingIterable<InternalKey, Slice> {
     private final TableCache tableCache;
     private final InternalKeyComparator internalKeyComparator;
     private final List<FileMetaData> files;
 
-    public static final Comparator<FileMetaData> NEWEST_FIRST = new Comparator<FileMetaData>()
-    {
+    public static final Comparator<FileMetaData> NEWEST_FIRST = new Comparator<FileMetaData>() {
         @Override
-        public int compare(FileMetaData fileMetaData, FileMetaData fileMetaData1)
-        {
+        public int compare(FileMetaData fileMetaData, FileMetaData fileMetaData1) {
             return (int) (fileMetaData1.getNumber() - fileMetaData.getNumber());
         }
     };
 
-    public Level0(List<FileMetaData> files, TableCache tableCache, InternalKeyComparator internalKeyComparator)
-    {
+    public Level0(List<FileMetaData> files, TableCache tableCache, InternalKeyComparator internalKeyComparator) {
         requireNonNull(files, "files is null");
         requireNonNull(tableCache, "tableCache is null");
         requireNonNull(internalKeyComparator, "internalKeyComparator is null");
@@ -72,24 +68,20 @@ public class Level0
         this.internalKeyComparator = internalKeyComparator;
     }
 
-    public int getLevelNumber()
-    {
+    public int getLevelNumber() {
         return 0;
     }
 
-    public List<FileMetaData> getFiles()
-    {
+    public List<FileMetaData> getFiles() {
         return files;
     }
 
     @Override
-    public Level0Iterator iterator()
-    {
+    public Level0Iterator iterator() {
         return new Level0Iterator(tableCache, files, internalKeyComparator);
     }
 
-    public LookupResult get(LookupKey key, ReadStats readStats)
-    {
+    public LookupResult get(LookupKey key, ReadStats readStats) {
         if (files.isEmpty()) {
             return null;
         }
@@ -122,8 +114,7 @@ public class Level0
                 if (key.getUserKey().equals(internalKey.getUserKey())) {
                     if (internalKey.getValueType() == ValueType.DELETION) {
                         return LookupResult.deleted(key);
-                    }
-                    else if (internalKey.getValueType() == VALUE) {
+                    } else if (internalKey.getValueType() == VALUE) {
                         return LookupResult.ok(key, entry.getValue());
                     }
                 }
@@ -139,8 +130,7 @@ public class Level0
         return null;
     }
 
-    public boolean someFileOverlapsRange(Slice smallestUserKey, Slice largestUserKey)
-    {
+    public boolean someFileOverlapsRange(Slice smallestUserKey, Slice largestUserKey) {
         InternalKey smallestInternalKey = new InternalKey(smallestUserKey, MAX_SEQUENCE_NUMBER, VALUE);
         int index = findFile(smallestInternalKey);
 
@@ -149,8 +139,7 @@ public class Level0
                 userComparator.compare(largestUserKey, files.get(index).getSmallest().getUserKey()) >= 0);
     }
 
-    private int findFile(InternalKey targetKey)
-    {
+    private int findFile(InternalKey targetKey) {
         if (files.isEmpty()) {
             return files.size();
         }
@@ -167,8 +156,7 @@ public class Level0
                 // Key at "mid.largest" is < "target".  Therefore all
                 // files at or before "mid" are uninteresting.
                 left = mid + 1;
-            }
-            else {
+            } else {
                 // Key at "mid.largest" is >= "target".  Therefore all files
                 // after "mid" are uninteresting.
                 right = mid;
@@ -177,15 +165,13 @@ public class Level0
         return right;
     }
 
-    public void addFile(FileMetaData fileMetaData)
-    {
+    public void addFile(FileMetaData fileMetaData) {
         // todo remove mutation
         files.add(fileMetaData);
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         final StringBuilder sb = new StringBuilder();
         sb.append("Level0");
         sb.append("{files=").append(files);

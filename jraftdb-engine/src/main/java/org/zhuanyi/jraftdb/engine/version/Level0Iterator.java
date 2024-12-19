@@ -20,7 +20,7 @@ package org.zhuanyi.jraftdb.engine.version;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 import com.google.common.collect.Iterables;
-import org.zhuanyi.common.Slice;
+import org.zhuanyi.jraftdb.engine.utils.Slice;
 import org.zhuanyi.jraftdb.engine.data.InternalKey;
 import org.zhuanyi.jraftdb.engine.iterator.AbstractSeekingIterator;
 import org.zhuanyi.jraftdb.engine.iterator.InternalIterator;

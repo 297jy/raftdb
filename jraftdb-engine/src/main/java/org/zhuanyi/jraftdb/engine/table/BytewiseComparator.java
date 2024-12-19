@@ -17,7 +17,7 @@
  */
 package org.zhuanyi.jraftdb.engine.table;
 
-import org.zhuanyi.common.Slice;
+import org.zhuanyi.jraftdb.engine.utils.Slice;
 import org.zhuanyi.jraftdb.engine.comparator.UserComparator;
 import org.zhuanyi.jraftdb.engine.table.block.BlockBuilder;
 

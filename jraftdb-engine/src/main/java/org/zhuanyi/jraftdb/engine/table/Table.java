@@ -19,8 +19,8 @@ package org.zhuanyi.jraftdb.engine.table;
 
 import com.google.common.base.Throwables;
 import org.zhuanyi.common.Closeables;
-import org.zhuanyi.common.Slice;
-import org.zhuanyi.common.VariableLengthQuantity;
+import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.VariableLengthQuantity;
 import org.zhuanyi.jraftdb.engine.table.block.Block;
 import org.zhuanyi.jraftdb.engine.table.block.BlockHandle;
 import org.zhuanyi.jraftdb.engine.table.block.BlockIterator;

@@ -20,7 +20,7 @@ package org.zhuanyi.jraftdb.engine.version;
 import com.google.common.base.Joiner;
 import com.google.common.collect.*;
 import com.google.common.io.Files;
-import org.zhuanyi.common.Slice;
+import org.zhuanyi.jraftdb.engine.utils.Slice;
 import org.zhuanyi.jraftdb.engine.compaction.Compaction;
 import org.zhuanyi.jraftdb.engine.comparator.InternalKeyComparator;
 import org.zhuanyi.jraftdb.engine.comparator.UserComparator;

@@ -18,13 +18,12 @@
 package org.zhuanyi.jraftdb.engine.log;
 
 
-import org.zhuanyi.common.Slice;
+import org.zhuanyi.jraftdb.engine.utils.Slice;
 
 import java.io.File;
 import java.io.IOException;
 
-public interface LogWriter
-{
+public interface LogWriter {
     boolean isClosed();
 
     void close()

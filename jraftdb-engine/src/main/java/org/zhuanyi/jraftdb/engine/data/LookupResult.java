@@ -18,7 +18,7 @@
 package org.zhuanyi.jraftdb.engine.data;
 
 
-import org.zhuanyi.common.Slice;
+import org.zhuanyi.jraftdb.engine.utils.Slice;
 
 import static java.util.Objects.requireNonNull;
 

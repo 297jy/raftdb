@@ -21,10 +21,10 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import org.zhuanyi.common.DynamicSliceOutput;
-import org.zhuanyi.common.Slice;
-import org.zhuanyi.common.SliceInput;
-import org.zhuanyi.common.VariableLengthQuantity;
+import org.zhuanyi.jraftdb.engine.utils.DynamicSliceOutput;
+import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.SliceInput;
+import org.zhuanyi.jraftdb.engine.utils.VariableLengthQuantity;
 import org.zhuanyi.jraftdb.engine.data.InternalKey;
 import org.zhuanyi.jraftdb.engine.meta.FileMetaData;
 

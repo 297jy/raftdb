@@ -18,8 +18,8 @@
 package org.zhuanyi.jraftdb.engine.table;
 
 
-import org.zhuanyi.common.Slice;
-import org.zhuanyi.common.Slices;
+import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.Slices;
 import org.zhuanyi.jraftdb.engine.table.block.Block;
 import org.zhuanyi.jraftdb.engine.table.block.BlockHandle;
 import org.zhuanyi.jraftdb.engine.table.block.BlockTrailer;

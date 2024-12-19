@@ -18,7 +18,7 @@
 package org.zhuanyi.jraftdb.engine.table.block;
 
 
-import org.zhuanyi.common.*;
+import org.zhuanyi.jraftdb.engine.utils.*;
 
 public class BlockHandle {
     public static final int MAX_ENCODED_LENGTH = 10 + 10;

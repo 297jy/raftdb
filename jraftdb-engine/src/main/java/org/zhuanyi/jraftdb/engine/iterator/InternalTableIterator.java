@@ -18,7 +18,7 @@
 package org.zhuanyi.jraftdb.engine.iterator;
 
 import com.google.common.collect.Maps;
-import org.zhuanyi.common.Slice;
+import org.zhuanyi.jraftdb.engine.utils.Slice;
 import org.zhuanyi.jraftdb.engine.data.InternalKey;
 
 

@@ -21,7 +21,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import org.zhuanyi.common.Slice;
+import org.zhuanyi.jraftdb.engine.utils.Slice;
 import org.zhuanyi.jraftdb.engine.compaction.Compaction;
 import org.zhuanyi.jraftdb.engine.comparator.InternalKeyComparator;
 import org.zhuanyi.jraftdb.engine.data.InternalKey;

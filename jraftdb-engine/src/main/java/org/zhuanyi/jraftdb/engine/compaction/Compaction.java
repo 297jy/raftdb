@@ -18,7 +18,7 @@
 package org.zhuanyi.jraftdb.engine.compaction;
 
 import com.google.common.collect.ImmutableList;
-import org.zhuanyi.common.Slice;
+import org.zhuanyi.jraftdb.engine.utils.Slice;
 import org.zhuanyi.jraftdb.engine.comparator.InternalKeyComparator;
 import org.zhuanyi.jraftdb.engine.comparator.UserComparator;
 import org.zhuanyi.jraftdb.engine.data.InternalKey;

@@ -18,10 +18,10 @@
 package org.zhuanyi.jraftdb.engine.table.block;
 
 import com.google.common.primitives.Ints;
-import org.zhuanyi.common.DynamicSliceOutput;
-import org.zhuanyi.common.IntVector;
-import org.zhuanyi.common.Slice;
-import org.zhuanyi.common.VariableLengthQuantity;
+import org.zhuanyi.jraftdb.engine.utils.DynamicSliceOutput;
+import org.zhuanyi.jraftdb.engine.utils.IntVector;
+import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.VariableLengthQuantity;
 
 import java.util.Comparator;
 
