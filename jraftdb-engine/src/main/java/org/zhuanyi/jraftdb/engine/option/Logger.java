@@ -20,7 +20,6 @@ package org.zhuanyi.jraftdb.engine.option;
 /**
  * @author <a href="http://hiramchirino.com">Hiram Chirino</a>
  */
-public interface Logger
-{
+public interface Logger {
     void log(String message);
 }

@@ -322,7 +322,7 @@ public final class SliceInput
      */
     public int readBytes(GatheringByteChannel out, int length)
             throws IOException {
-        int readBytes = slice.getBytes(position, out, length);
+        int readBytes = slice.writeBytesToChannel(position, out, length);
         position += readBytes;
         return readBytes;
     }

@@ -71,6 +71,30 @@ public abstract class BaseWritableFile {
         return res > 0 ? Status.ok() : Status.ioError("writeUnbuffered error");
     }
 
+    /**
+     * 刷新缓冲区
+     *
+     * @return
+     */
+    public Status flush() {
+        return flushBuffer();
+    }
+
+    /**
+     * 将数据同步写入文件并落盘，因为数据即使被write，也只是保存在pagecache中，存在数据丢失的风险
+     *
+     * @return
+     */
+    public Status sync() {
+        Status status = flushBuffer();
+        if (!status.isOk()) {
+            return status;
+        }
+
+        // 如果是Manifest文件需要刷新
+        return doSync(isManifest) ? Status.ok() : Status.ioError("sync error");
+    }
+
 
     /**
      * 将缓冲区中的数据写入到文件中
@@ -79,7 +103,7 @@ public abstract class BaseWritableFile {
      * @param size   需要写入数据的字节大小
      * @return
      */
-    public abstract int doWrite(byte[] data, int offset, int size);
+    protected abstract int doWrite(byte[] data, int offset, int size);
 
     /**
      * 将data中的数据写入文件
@@ -89,7 +113,7 @@ public abstract class BaseWritableFile {
      * @param size
      * @return
      */
-    public abstract int doWrite(Slice data, int offset, int size);
+    protected abstract int doWrite(Slice data, int offset, int size);
 
 
     /**
@@ -97,20 +121,18 @@ public abstract class BaseWritableFile {
      *
      * @return
      */
-    public abstract Status close();
-
-    /**
-     * 刷新缓冲区
-     *
-     * @return
-     */
-    public abstract Status flush();
+    public Status close() {
+        return doClose() ? Status.ok() : Status.ioError("doClose error");
+    }
 
     /**
      * 将数据同步写入文件并落盘，因为数据即使被write，也只是保存在pagecache中，存在数据丢失的风险
      *
+     * @param metaData 元数据
      * @return
      */
-    public abstract Status sync();
+    protected abstract boolean doSync(boolean metaData);
+
+    protected abstract boolean doClose();
 
 }

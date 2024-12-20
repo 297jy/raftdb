@@ -178,8 +178,8 @@ public class FileChannelLogWriter
         Slice header = newLogRecordHeader(type, slice, slice.length());
 
         // write the header and the payload
-        header.getBytes(0, fileChannel, header.length());
-        slice.getBytes(0, fileChannel, slice.length());
+        header.writeBytesToChannel(0, fileChannel, header.length());
+        slice.writeBytesToChannel(0, fileChannel, slice.length());
 
         blockOffset += HEADER_SIZE + slice.length();
     }

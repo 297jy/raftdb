@@ -252,7 +252,7 @@ public final class Slice
      *                                   {@code this.capacity}
      * @throws IOException               if the specified channel threw an exception during I/O
      */
-    public int getBytes(int index, GatheringByteChannel out, int length)
+    public int writeBytesToChannel(int index, GatheringByteChannel out, int length)
             throws IOException {
         Preconditions.checkPositionIndexes(index, index + length, this.length);
         index += offset;

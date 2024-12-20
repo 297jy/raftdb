@@ -1,10 +1,12 @@
 package org.zhuanyi.jraftdb.engine.utils;
 
-import org.zhuanyi.jraftdb.engine.dto.Status;
-
+import org.zhuanyi.common.Closeables;
+import org.zhuanyi.common.LogUtils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
 public class FileChannelWritableFile extends BaseWritableFile {
@@ -18,27 +20,48 @@ public class FileChannelWritableFile extends BaseWritableFile {
     }
 
     @Override
-    public Status close() {
-        return null;
+    public boolean doClose() {
+        // try to forces the log to disk
+        try {
+            fileChannel.force(true);
+        } catch (IOException ex) {
+            LogUtils.info(String.format("FileChannelWritableFile-doClose-ex:{%s}", ex.getMessage()));
+            return false;
+        }
+
+        // close the channel
+        Closeables.closeQuietly(fileChannel);
+        return true;
     }
 
     @Override
-    public Status flush() {
-        return null;
+    protected int doWrite(byte[] data, int offset, int size) {
+        try {
+            return fileChannel.write(ByteBuffer.wrap(data, offset, size));
+        } catch (IOException ex) {
+            LogUtils.info(String.format("FileChannelWritableFile-doWrite-ex:{%s}", ex.getMessage()));
+            return -1;
+        }
     }
 
     @Override
-    public Status sync() {
-        return null;
+    protected int doWrite(Slice data, int offset, int size) {
+        try {
+            return data.writeBytesToChannel(offset, fileChannel, size);
+        } catch (IOException ex) {
+            LogUtils.info(String.format("FileChannelWritableFile-doWrite-ex:{%s}", ex.getMessage()));
+            return -1;
+        }
     }
 
     @Override
-    public int doWrite(byte[] data, int offset, int size) {
-        return 0;
-    }
-
-    @Override
-    public int doWrite(Slice data, int offset, int size) {
-        return 0;
+    protected boolean doSync(boolean metaData) {
+        try {
+            fileChannel.force(metaData);
+        } catch (IOException ex) {
+            LogUtils.info(String.format("FileChannelWritableFile-doSync-ex:{%s}", ex.getMessage()));
+            return false;
+        }
+        return true;
     }
 }
