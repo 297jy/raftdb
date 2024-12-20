@@ -239,7 +239,7 @@ public final class SliceInput
      *                                   if {@code destinationIndex + length} is greater than {@code destination.length}
      */
     public void readBytes(byte[] destination, int destinationIndex, int length) {
-        slice.getBytes(position, destination, destinationIndex, length);
+        slice.copyBytes(position, destination, destinationIndex, length);
         position += length;
     }
 

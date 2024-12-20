@@ -1,7 +1,6 @@
-package org.zhuanyi.jraftdb.engine.log;
+package org.zhuanyi.jraftdb.engine.utils;
 
 import org.zhuanyi.jraftdb.engine.dto.Status;
-import org.zhuanyi.jraftdb.engine.utils.Slice;
 
 
 public interface WritableFile {
@@ -25,6 +24,10 @@ public interface WritableFile {
      */
     Status flush();
 
+    /**
+     * 将数据同步写入文件并落盘，因为数据即使被write，也只是保存在pagecache中，存在数据丢失的风险
+     * @return
+     */
     Status sync();
 
 }

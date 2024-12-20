@@ -166,4 +166,17 @@ public final class FileUtils {
         }
         return result;
     }
+
+    /**
+     * 判断File是否是一个Manifest文件
+     * Manifest文件：DB元数据文件
+     * 它记录的是leveldb的元信息，比如DB使用的Comparator名，以及各SSTable文件的管理信息：如Level层数、文件名、最小key和最大key等等。
+     *
+     * @param file
+     * @return
+     */
+    public static boolean isManifest(File file) {
+        requireNonNull(file, "file is null");
+        return file.getName().startsWith("MANIFEST");
+    }
 }

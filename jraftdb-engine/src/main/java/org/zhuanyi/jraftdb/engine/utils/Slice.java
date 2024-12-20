@@ -171,7 +171,7 @@ public final class Slice
      *                                   {@code dst.capacity}
      */
     public void getBytes(int index, Slice dst, int dstIndex, int length) {
-        getBytes(index, dst.data, dstIndex, length);
+        copyBytes(index, dst.data, dstIndex, length);
     }
 
     /**
@@ -187,7 +187,7 @@ public final class Slice
      *                                   if {@code dstIndex + length} is greater than
      *                                   {@code dst.length}
      */
-    public void getBytes(int index, byte[] destination, int destinationIndex, int length) {
+    public void copyBytes(int index, byte[] destination, int destinationIndex, int length) {
         Preconditions.checkPositionIndexes(index, index + length, this.length);
         Preconditions.checkPositionIndexes(destinationIndex, destinationIndex + length, destination.length);
         index += offset;
