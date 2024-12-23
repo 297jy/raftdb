@@ -15,20 +15,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zhuanyi.jraftdb.engine.comparator;
+package org.zhuanyi.jraftdb.engine.log;
 
 
 import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 
-import java.util.Comparator;
 
-// todo this interface needs more thought
-public interface UserComparator
-        extends Comparator<Slice>
-{
-    String name();
+import java.io.IOException;
 
-    Slice findShortestSeparator(Slice start, Slice limit);
-
-    Slice findShortSuccessor(Slice key);
+public interface LogRecordWriter {
+    // Writes a stream of chunks such that no chunk is split across a block boundary
+    void addRecord(Slice record) throws IOException;
 }

@@ -1,7 +1,9 @@
-package org.zhuanyi.jraftdb.engine.utils;
+package org.zhuanyi.jraftdb.engine.utils.file;
 
 import org.zhuanyi.common.Closeables;
 import org.zhuanyi.common.LogUtils;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -14,8 +16,8 @@ public class FileChannelWritableFile extends BaseWritableFile {
 
     private final FileChannel fileChannel;
 
-    public FileChannelWritableFile(File file) throws FileNotFoundException {
-        super(file);
+    public FileChannelWritableFile(File file, long fileNumber) throws FileNotFoundException {
+        super(file, fileNumber);
         this.fileChannel = new FileOutputStream(file).getChannel();
     }
 

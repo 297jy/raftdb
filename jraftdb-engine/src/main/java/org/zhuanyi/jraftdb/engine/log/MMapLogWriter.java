@@ -20,6 +20,10 @@ package org.zhuanyi.jraftdb.engine.log;
 
 import org.zhuanyi.common.*;
 import org.zhuanyi.jraftdb.engine.utils.*;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceInput;
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceOutput;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slices;
 
 import java.io.File;
 import java.io.IOException;
@@ -188,8 +192,8 @@ public class MMapLogWriter
 
         // write the header and the payload
         ensureCapacity(header.length() + slice.length());
-        header.getBytes(0, mappedByteBuffer);
-        slice.getBytes(0, mappedByteBuffer);
+        header.writeBytesToBuffer(0, mappedByteBuffer);
+        slice.writeBytesToBuffer(0, mappedByteBuffer);
 
         blockOffset += HEADER_SIZE + slice.length();
     }

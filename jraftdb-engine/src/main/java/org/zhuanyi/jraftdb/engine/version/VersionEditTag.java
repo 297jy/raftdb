@@ -18,17 +18,17 @@
 package org.zhuanyi.jraftdb.engine.version;
 
 
-import org.zhuanyi.jraftdb.engine.utils.SliceInput;
-import org.zhuanyi.jraftdb.engine.utils.SliceOutput;
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceInput;
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceOutput;
 import org.zhuanyi.jraftdb.engine.utils.VariableLengthQuantity;
-import org.zhuanyi.jraftdb.engine.data.InternalKey;
+import org.zhuanyi.jraftdb.engine.dto.InternalKey;
 import org.zhuanyi.jraftdb.engine.meta.FileMetaData;
 
 import java.util.Map.Entry;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static org.zhuanyi.jraftdb.engine.utils.Slices.readLengthPrefixedBytes;
-import static org.zhuanyi.jraftdb.engine.utils.Slices.writeLengthPrefixedBytes;
+import static org.zhuanyi.jraftdb.engine.utils.slice.Slices.readLengthPrefixedBytes;
+import static org.zhuanyi.jraftdb.engine.utils.slice.Slices.writeLengthPrefixedBytes;
 
 public enum VersionEditTag {
     // 8 is no longer used. It was used for large value refs.

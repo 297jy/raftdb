@@ -1,6 +1,7 @@
 package org.zhuanyi.jraftdb.engine.utils;
 
 import org.zhuanyi.jraftdb.engine.dto.Status;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 
 
 public interface WritableFile {

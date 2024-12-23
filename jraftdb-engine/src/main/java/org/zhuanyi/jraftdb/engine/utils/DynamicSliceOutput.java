@@ -17,6 +17,11 @@
  */
 package org.zhuanyi.jraftdb.engine.utils;
 
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceInput;
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceOutput;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slices;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;

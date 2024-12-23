@@ -19,10 +19,10 @@ package org.zhuanyi.jraftdb.engine.db;
 
 import com.google.common.base.Throwables;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import org.zhuanyi.jraftdb.engine.utils.Slice;
-import org.zhuanyi.jraftdb.engine.utils.SliceInput;
-import org.zhuanyi.jraftdb.engine.utils.SliceOutput;
-import org.zhuanyi.jraftdb.engine.utils.Slices;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceInput;
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceOutput;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slices;
 import org.zhuanyi.common.exp.DBException;
 import org.zhuanyi.jraftdb.engine.api.DB;
 import org.zhuanyi.jraftdb.engine.api.Range;
@@ -33,10 +33,10 @@ import org.zhuanyi.jraftdb.engine.comparator.CustomUserComparator;
 import org.zhuanyi.jraftdb.engine.comparator.InternalKeyComparator;
 import org.zhuanyi.jraftdb.engine.comparator.InternalUserComparator;
 import org.zhuanyi.jraftdb.engine.comparator.UserComparator;
-import org.zhuanyi.jraftdb.engine.data.InternalKey;
-import org.zhuanyi.jraftdb.engine.data.LookupKey;
-import org.zhuanyi.jraftdb.engine.data.LookupResult;
-import org.zhuanyi.jraftdb.engine.data.ValueType;
+import org.zhuanyi.jraftdb.engine.dto.InternalKey;
+import org.zhuanyi.jraftdb.engine.dto.LookupKey;
+import org.zhuanyi.jraftdb.engine.dto.LookupResult;
+import org.zhuanyi.jraftdb.engine.dto.ValueType;
 import org.zhuanyi.jraftdb.engine.iterator.MergingIterator;
 import org.zhuanyi.jraftdb.engine.iterator.SeekingIterable;
 import org.zhuanyi.jraftdb.engine.log.*;
@@ -70,12 +70,12 @@ import static com.google.common.base.Preconditions.checkState;
 import static java.util.Objects.requireNonNull;
 import static org.zhuanyi.common.SizeOf.SIZE_OF_INT;
 import static org.zhuanyi.common.SizeOf.SIZE_OF_LONG;
-import static org.zhuanyi.jraftdb.engine.utils.Slices.readLengthPrefixedBytes;
-import static org.zhuanyi.jraftdb.engine.utils.Slices.writeLengthPrefixedBytes;
+import static org.zhuanyi.jraftdb.engine.utils.slice.Slices.readLengthPrefixedBytes;
+import static org.zhuanyi.jraftdb.engine.utils.slice.Slices.writeLengthPrefixedBytes;
 import static org.zhuanyi.jraftdb.engine.constant.DbConstants.*;
-import static org.zhuanyi.jraftdb.engine.data.SequenceNumber.MAX_SEQUENCE_NUMBER;
-import static org.zhuanyi.jraftdb.engine.data.ValueType.DELETION;
-import static org.zhuanyi.jraftdb.engine.data.ValueType.VALUE;
+import static org.zhuanyi.jraftdb.engine.dto.SequenceNumber.MAX_SEQUENCE_NUMBER;
+import static org.zhuanyi.jraftdb.engine.dto.ValueType.DELETION;
+import static org.zhuanyi.jraftdb.engine.dto.ValueType.VALUE;
 
 // todo make thread safe and concurrent
 @SuppressWarnings("AccessingNonPublicFieldOfAnotherObject")

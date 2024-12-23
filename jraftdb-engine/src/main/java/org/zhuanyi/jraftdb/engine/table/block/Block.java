@@ -17,8 +17,8 @@
  */
 package org.zhuanyi.jraftdb.engine.table.block;
 
-import org.zhuanyi.jraftdb.engine.utils.Slice;
-import org.zhuanyi.jraftdb.engine.utils.Slices;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slices;
 import org.zhuanyi.jraftdb.engine.iterator.SeekingIterable;
 
 import java.util.Comparator;

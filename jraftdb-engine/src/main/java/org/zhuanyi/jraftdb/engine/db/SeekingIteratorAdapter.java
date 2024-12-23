@@ -18,8 +18,8 @@
 package org.zhuanyi.jraftdb.engine.db;
 
 
-import org.zhuanyi.jraftdb.engine.utils.Slice;
-import org.zhuanyi.jraftdb.engine.utils.Slices;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slices;
 import org.zhuanyi.jraftdb.engine.api.DBIterator;
 
 import java.util.Map.Entry;

@@ -19,7 +19,7 @@ package org.zhuanyi.jraftdb.engine.log;
 
 
 import org.zhuanyi.common.PureJavaCrc32C;
-import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 import org.zhuanyi.jraftdb.engine.option.DbOptions;
 
 import java.io.File;

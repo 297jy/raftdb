@@ -18,10 +18,10 @@
 package org.zhuanyi.jraftdb.engine.compaction;
 
 import com.google.common.collect.ImmutableList;
-import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 import org.zhuanyi.jraftdb.engine.comparator.InternalKeyComparator;
 import org.zhuanyi.jraftdb.engine.comparator.UserComparator;
-import org.zhuanyi.jraftdb.engine.data.InternalKey;
+import org.zhuanyi.jraftdb.engine.dto.InternalKey;
 import org.zhuanyi.jraftdb.engine.meta.FileMetaData;
 import org.zhuanyi.jraftdb.engine.version.Version;
 import org.zhuanyi.jraftdb.engine.version.VersionEdit;

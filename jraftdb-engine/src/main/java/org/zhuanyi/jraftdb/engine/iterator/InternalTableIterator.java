@@ -18,8 +18,8 @@
 package org.zhuanyi.jraftdb.engine.iterator;
 
 import com.google.common.collect.Maps;
-import org.zhuanyi.jraftdb.engine.utils.Slice;
-import org.zhuanyi.jraftdb.engine.data.InternalKey;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
+import org.zhuanyi.jraftdb.engine.dto.InternalKey;
 
 
 import java.util.Map.Entry;

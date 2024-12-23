@@ -19,8 +19,8 @@ package org.zhuanyi.jraftdb.engine.table;
 
 
 import org.zhuanyi.common.Closeables;
-import org.zhuanyi.jraftdb.engine.utils.Slice;
-import org.zhuanyi.jraftdb.engine.utils.Slices;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slices;
 import org.zhuanyi.jraftdb.engine.option.CompressionType;
 import org.zhuanyi.jraftdb.engine.table.block.Block;
 import org.zhuanyi.jraftdb.engine.table.block.BlockHandle;

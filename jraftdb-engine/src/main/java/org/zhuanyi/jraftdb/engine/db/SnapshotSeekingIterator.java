@@ -18,10 +18,10 @@
 package org.zhuanyi.jraftdb.engine.db;
 
 import com.google.common.collect.Maps;
-import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 import org.zhuanyi.jraftdb.engine.utils.DbIterator;
-import org.zhuanyi.jraftdb.engine.data.InternalKey;
-import org.zhuanyi.jraftdb.engine.data.ValueType;
+import org.zhuanyi.jraftdb.engine.dto.InternalKey;
+import org.zhuanyi.jraftdb.engine.dto.ValueType;
 import org.zhuanyi.jraftdb.engine.iterator.AbstractSeekingIterator;
 
 import java.util.Comparator;

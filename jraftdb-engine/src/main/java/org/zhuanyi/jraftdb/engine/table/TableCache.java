@@ -19,7 +19,7 @@ package org.zhuanyi.jraftdb.engine.table;
 
 import com.google.common.cache.*;
 import org.zhuanyi.common.Closeables;
-import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 import org.zhuanyi.jraftdb.engine.comparator.UserComparator;
 import org.zhuanyi.jraftdb.engine.iterator.InternalTableIterator;
 import org.zhuanyi.jraftdb.engine.meta.FileMetaData;

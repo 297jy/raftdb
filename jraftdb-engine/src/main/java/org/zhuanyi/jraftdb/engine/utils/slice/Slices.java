@@ -15,7 +15,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zhuanyi.jraftdb.engine.utils;
+package org.zhuanyi.jraftdb.engine.utils.slice;
+
+import org.zhuanyi.jraftdb.engine.utils.VariableLengthQuantity;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;

@@ -17,12 +17,12 @@
  */
 package org.zhuanyi.jraftdb.engine.comparator;
 
-import org.zhuanyi.jraftdb.engine.utils.Slice;
-import org.zhuanyi.jraftdb.engine.data.InternalKey;
-import org.zhuanyi.jraftdb.engine.data.ValueType;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
+import org.zhuanyi.jraftdb.engine.dto.InternalKey;
+import org.zhuanyi.jraftdb.engine.dto.ValueType;
 
 import static com.google.common.base.Preconditions.checkState;
-import static org.zhuanyi.jraftdb.engine.data.SequenceNumber.MAX_SEQUENCE_NUMBER;
+import static org.zhuanyi.jraftdb.engine.dto.SequenceNumber.MAX_SEQUENCE_NUMBER;
 
 public class InternalUserComparator
         implements UserComparator

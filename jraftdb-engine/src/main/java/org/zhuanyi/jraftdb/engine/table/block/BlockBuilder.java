@@ -20,7 +20,7 @@ package org.zhuanyi.jraftdb.engine.table.block;
 import com.google.common.primitives.Ints;
 import org.zhuanyi.jraftdb.engine.utils.DynamicSliceOutput;
 import org.zhuanyi.jraftdb.engine.utils.IntVector;
-import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 import org.zhuanyi.jraftdb.engine.utils.VariableLengthQuantity;
 
 import java.util.Comparator;

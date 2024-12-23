@@ -19,9 +19,9 @@ package org.zhuanyi.jraftdb.engine.table;
 
 import com.google.common.collect.Iterators;
 import com.google.common.collect.PeekingIterator;
-import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.dto.*;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 import org.zhuanyi.jraftdb.engine.comparator.InternalKeyComparator;
-import org.zhuanyi.jraftdb.engine.data.*;
 import org.zhuanyi.jraftdb.engine.iterator.InternalIterator;
 import org.zhuanyi.jraftdb.engine.iterator.SeekingIterable;
 

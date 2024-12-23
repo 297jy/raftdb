@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zhuanyi.jraftdb.engine.utils;
+package org.zhuanyi.jraftdb.engine.utils.slice;
 
 import java.io.DataInput;
 import java.io.IOException;
@@ -307,7 +307,7 @@ public final class SliceInput
      */
     public void readBytes(ByteBuffer destination) {
         int length = destination.remaining();
-        slice.getBytes(position, destination);
+        slice.writeBytesToBuffer(position, destination);
         position += length;
     }
 

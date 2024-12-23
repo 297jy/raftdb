@@ -19,10 +19,10 @@ package org.zhuanyi.jraftdb.engine.log;
 
 
 import org.zhuanyi.common.*;
-import org.zhuanyi.jraftdb.engine.utils.Slice;
-import org.zhuanyi.jraftdb.engine.utils.SliceInput;
-import org.zhuanyi.jraftdb.engine.utils.SliceOutput;
-import org.zhuanyi.jraftdb.engine.utils.Slices;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceInput;
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceOutput;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slices;
 
 import java.io.File;
 import java.io.FileNotFoundException;

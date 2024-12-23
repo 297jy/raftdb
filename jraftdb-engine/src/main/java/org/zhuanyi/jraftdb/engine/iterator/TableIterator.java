@@ -18,7 +18,7 @@
 package org.zhuanyi.jraftdb.engine.iterator;
 
 
-import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 import org.zhuanyi.jraftdb.engine.table.Table;
 import org.zhuanyi.jraftdb.engine.table.block.Block;
 import org.zhuanyi.jraftdb.engine.table.block.BlockIterator;

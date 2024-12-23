@@ -15,33 +15,37 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zhuanyi.jraftdb.engine.data;
+package org.zhuanyi.jraftdb.engine.dto;
 
+public enum ValueType {
+    /**
+     * 代表该记录被删除
+     */
+    DELETION(0x00),
 
-import org.zhuanyi.jraftdb.engine.utils.Slice;
+    /**
+     * 代表该记录存在
+     */
+    VALUE(0x01);
 
-public class LookupKey
-{
-    private final InternalKey key;
-
-    public LookupKey(Slice userKey, long sequenceNumber)
-    {
-        key = new InternalKey(userKey, sequenceNumber, ValueType.VALUE);
+    public static ValueType getValueTypeByPersistentId(int persistentId) {
+        switch (persistentId) {
+            case 0:
+                return DELETION;
+            case 1:
+                return VALUE;
+            default:
+                throw new IllegalArgumentException("Unknown persistentId " + persistentId);
+        }
     }
 
-    public InternalKey getInternalKey()
-    {
-        return key;
+    private final int persistentId;
+
+    ValueType(int persistentId) {
+        this.persistentId = persistentId;
     }
 
-    public Slice getUserKey()
-    {
-        return key.getUserKey();
-    }
-
-    @Override
-    public String toString()
-    {
-        return key.toString();
+    public int getPersistentId() {
+        return persistentId;
     }
 }

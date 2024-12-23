@@ -17,7 +17,7 @@
  */
 package org.zhuanyi.jraftdb.engine.meta;
 
-import org.zhuanyi.jraftdb.engine.data.InternalKey;
+import org.zhuanyi.jraftdb.engine.dto.InternalKey;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

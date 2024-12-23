@@ -15,10 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zhuanyi.jraftdb.engine.utils;
+package org.zhuanyi.jraftdb.engine.utils.slice;
 
 import com.google.common.base.Preconditions;
 import org.zhuanyi.common.SizeOf;
+import org.zhuanyi.jraftdb.engine.utils.BasicSliceOutput;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -218,10 +219,27 @@ public final class Slice
      *                                   if {@code index + dst.remaining()} is greater than
      *                                   {@code this.capacity}
      */
-    public void getBytes(int index, ByteBuffer destination) {
+    public void writeBytesToBuffer(int index, ByteBuffer destination) {
         Preconditions.checkPositionIndex(index, this.length);
         index += offset;
         destination.put(data, index, Math.min(length, destination.remaining()));
+    }
+
+    /**
+     * Transfers this buffer's data to the specified destination starting at
+     * the specified absolute {@code index} until the destination's position
+     * reaches its limit.
+     *
+     * @throws IndexOutOfBoundsException if the specified {@code index} is less than {@code 0} or
+     *                                   if {@code index + dst.remaining()} is greater than
+     *                                   {@code this.capacity}
+     */
+    public int writeBytesToBuffer(int index, ByteBuffer destination, int size) {
+        Preconditions.checkPositionIndex(index, size);
+        index += offset;
+        int writeBytes = Math.min(size, destination.remaining());
+        destination.put(data, index, writeBytes);
+        return writeBytes;
     }
 
     /**

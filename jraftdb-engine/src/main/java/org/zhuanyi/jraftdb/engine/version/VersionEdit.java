@@ -22,10 +22,10 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import org.zhuanyi.jraftdb.engine.utils.DynamicSliceOutput;
-import org.zhuanyi.jraftdb.engine.utils.Slice;
-import org.zhuanyi.jraftdb.engine.utils.SliceInput;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceInput;
 import org.zhuanyi.jraftdb.engine.utils.VariableLengthQuantity;
-import org.zhuanyi.jraftdb.engine.data.InternalKey;
+import org.zhuanyi.jraftdb.engine.dto.InternalKey;
 import org.zhuanyi.jraftdb.engine.meta.FileMetaData;
 
 import java.util.Map;

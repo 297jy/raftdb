@@ -19,8 +19,8 @@ package org.zhuanyi.jraftdb.engine.table;
 
 import com.google.common.base.Throwables;
 import org.zhuanyi.common.PureJavaCrc32C;
-import org.zhuanyi.jraftdb.engine.utils.Slice;
-import org.zhuanyi.jraftdb.engine.utils.Slices;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slices;
 import org.zhuanyi.jraftdb.engine.comparator.UserComparator;
 import org.zhuanyi.jraftdb.engine.option.CompressionType;
 import org.zhuanyi.jraftdb.engine.option.Options;

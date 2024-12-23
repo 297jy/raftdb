@@ -18,10 +18,10 @@
 package org.zhuanyi.jraftdb.engine.table.block;
 
 
-import org.zhuanyi.jraftdb.engine.utils.Slice;
-import org.zhuanyi.jraftdb.engine.utils.SliceInput;
-import org.zhuanyi.jraftdb.engine.utils.SliceOutput;
-import org.zhuanyi.jraftdb.engine.utils.Slices;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceInput;
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceOutput;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slices;
 import org.zhuanyi.jraftdb.engine.option.CompressionType;
 
 import static java.util.Objects.requireNonNull;

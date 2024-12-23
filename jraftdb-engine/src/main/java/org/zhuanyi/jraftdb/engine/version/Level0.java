@@ -18,13 +18,13 @@
 package org.zhuanyi.jraftdb.engine.version;
 
 
-import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 import org.zhuanyi.jraftdb.engine.comparator.InternalKeyComparator;
 import org.zhuanyi.jraftdb.engine.comparator.UserComparator;
-import org.zhuanyi.jraftdb.engine.data.InternalKey;
-import org.zhuanyi.jraftdb.engine.data.LookupKey;
-import org.zhuanyi.jraftdb.engine.data.LookupResult;
-import org.zhuanyi.jraftdb.engine.data.ValueType;
+import org.zhuanyi.jraftdb.engine.dto.InternalKey;
+import org.zhuanyi.jraftdb.engine.dto.LookupKey;
+import org.zhuanyi.jraftdb.engine.dto.LookupResult;
+import org.zhuanyi.jraftdb.engine.dto.ValueType;
 import org.zhuanyi.jraftdb.engine.iterator.InternalTableIterator;
 import org.zhuanyi.jraftdb.engine.iterator.SeekingIterable;
 import org.zhuanyi.jraftdb.engine.meta.FileMetaData;
@@ -40,8 +40,8 @@ import java.util.Map.Entry;
 import static com.google.common.base.Preconditions.checkState;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Objects.requireNonNull;
-import static org.zhuanyi.jraftdb.engine.data.SequenceNumber.MAX_SEQUENCE_NUMBER;
-import static org.zhuanyi.jraftdb.engine.data.ValueType.VALUE;
+import static org.zhuanyi.jraftdb.engine.dto.SequenceNumber.MAX_SEQUENCE_NUMBER;
+import static org.zhuanyi.jraftdb.engine.dto.ValueType.VALUE;
 
 
 // todo this class should be immutable

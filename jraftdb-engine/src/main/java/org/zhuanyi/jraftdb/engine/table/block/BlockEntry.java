@@ -18,7 +18,7 @@
 package org.zhuanyi.jraftdb.engine.table.block;
 
 
-import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 
 import java.util.Map.Entry;
 

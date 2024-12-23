@@ -21,13 +21,13 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
-import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 import org.zhuanyi.jraftdb.engine.compaction.Compaction;
 import org.zhuanyi.jraftdb.engine.comparator.InternalKeyComparator;
-import org.zhuanyi.jraftdb.engine.data.InternalKey;
-import org.zhuanyi.jraftdb.engine.data.LookupKey;
-import org.zhuanyi.jraftdb.engine.data.LookupResult;
-import org.zhuanyi.jraftdb.engine.data.ValueType;
+import org.zhuanyi.jraftdb.engine.dto.InternalKey;
+import org.zhuanyi.jraftdb.engine.dto.LookupKey;
+import org.zhuanyi.jraftdb.engine.dto.LookupResult;
+import org.zhuanyi.jraftdb.engine.dto.ValueType;
 import org.zhuanyi.jraftdb.engine.iterator.InternalIterator;
 import org.zhuanyi.jraftdb.engine.iterator.InternalTableIterator;
 import org.zhuanyi.jraftdb.engine.iterator.MergingIterator;
@@ -47,7 +47,7 @@ import static com.google.common.collect.Ordering.natural;
 import static java.util.Objects.requireNonNull;
 import static org.zhuanyi.jraftdb.engine.constant.DbConstants.MAX_MEM_COMPACT_LEVEL;
 import static org.zhuanyi.jraftdb.engine.constant.DbConstants.NUM_LEVELS;
-import static org.zhuanyi.jraftdb.engine.data.SequenceNumber.MAX_SEQUENCE_NUMBER;
+import static org.zhuanyi.jraftdb.engine.dto.SequenceNumber.MAX_SEQUENCE_NUMBER;
 import static org.zhuanyi.jraftdb.engine.version.VersionSet.MAX_GRAND_PARENT_OVERLAP_BYTES;
 
 // todo this class should be immutable

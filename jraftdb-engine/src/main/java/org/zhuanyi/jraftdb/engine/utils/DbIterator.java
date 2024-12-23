@@ -18,12 +18,13 @@
 package org.zhuanyi.jraftdb.engine.utils;
 
 
-import org.zhuanyi.jraftdb.engine.data.InternalKey;
+import org.zhuanyi.jraftdb.engine.dto.InternalKey;
 import org.zhuanyi.jraftdb.engine.iterator.AbstractSeekingIterator;
 import org.zhuanyi.jraftdb.engine.iterator.InternalIterator;
 import org.zhuanyi.jraftdb.engine.iterator.InternalTableIterator;
 import org.zhuanyi.jraftdb.engine.iterator.SeekingIterator;
 import org.zhuanyi.jraftdb.engine.table.MemTable;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 import org.zhuanyi.jraftdb.engine.version.LevelIterator;
 
 import java.util.Comparator;

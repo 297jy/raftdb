@@ -18,7 +18,7 @@
 package org.zhuanyi.jraftdb.engine.log;
 
 
-import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 
 import java.io.File;
 import java.io.IOException;

@@ -18,7 +18,7 @@
 package org.zhuanyi.jraftdb.engine.comparator;
 
 
-import org.zhuanyi.jraftdb.engine.data.InternalKey;
+import org.zhuanyi.jraftdb.engine.dto.InternalKey;
 
 import java.util.Arrays;
 import java.util.Comparator;

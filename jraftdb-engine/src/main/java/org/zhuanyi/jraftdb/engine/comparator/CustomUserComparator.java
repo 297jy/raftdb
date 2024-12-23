@@ -18,7 +18,7 @@
 package org.zhuanyi.jraftdb.engine.comparator;
 
 
-import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 import org.zhuanyi.jraftdb.engine.option.DBComparator;
 
 public class CustomUserComparator

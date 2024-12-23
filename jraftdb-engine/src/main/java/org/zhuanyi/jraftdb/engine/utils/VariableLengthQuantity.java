@@ -17,6 +17,9 @@
  */
 package org.zhuanyi.jraftdb.engine.utils;
 
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceInput;
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceOutput;
+
 import java.nio.ByteBuffer;
 
 public final class VariableLengthQuantity {

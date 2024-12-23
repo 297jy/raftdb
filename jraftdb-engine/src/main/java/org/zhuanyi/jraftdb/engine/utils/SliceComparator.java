@@ -17,6 +17,8 @@
  */
 package org.zhuanyi.jraftdb.engine.utils;
 
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
+
 import java.util.Comparator;
 
 public final class SliceComparator

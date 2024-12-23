@@ -17,6 +17,8 @@
  */
 package org.zhuanyi.jraftdb.engine.utils;
 
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceOutput;
+
 import java.util.Arrays;
 
 import static com.google.common.base.Preconditions.checkArgument;

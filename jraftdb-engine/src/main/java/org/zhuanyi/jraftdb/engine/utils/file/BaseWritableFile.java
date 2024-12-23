@@ -1,9 +1,12 @@
-package org.zhuanyi.jraftdb.engine.utils;
+package org.zhuanyi.jraftdb.engine.utils.file;
 
 import org.zhuanyi.jraftdb.engine.constant.FileMetaConstants;
 import org.zhuanyi.jraftdb.engine.dto.Status;
+import org.zhuanyi.jraftdb.engine.utils.FileUtils;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 
 import java.io.File;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public abstract class BaseWritableFile {
@@ -16,12 +19,30 @@ public abstract class BaseWritableFile {
 
     protected boolean isManifest;
 
+    private final long fileNumber;
 
-    public BaseWritableFile(File file) {
+    private final AtomicBoolean closed = new AtomicBoolean();
+
+
+    public BaseWritableFile(File file, long fileNumber) {
         this.file = file;
         this.buf = new byte[FileMetaConstants.WRITABLE_FILE_BUFFER_SIZE];
         this.pos = 0;
         this.isManifest = FileUtils.isManifest(file);
+        this.fileNumber = fileNumber;
+    }
+
+    public long getFileNumber() {
+        return fileNumber;
+    }
+
+    public boolean isClosed() {
+        return closed.get();
+    }
+
+    public Status delete() {
+        close();
+        return file.delete() ? Status.ok() : Status.ioError("Delete failed");
     }
 
     /**
@@ -85,16 +106,29 @@ public abstract class BaseWritableFile {
      *
      * @return
      */
-    public Status sync() {
+    public Status sync(boolean metaSync) {
         Status status = flushBuffer();
         if (!status.isOk()) {
             return status;
         }
 
         // 如果是Manifest文件需要刷新
-        return doSync(isManifest) ? Status.ok() : Status.ioError("sync error");
+        return doSync(metaSync) ? Status.ok() : Status.ioError("sync error");
     }
 
+    /**
+     * 关闭并刷新缓冲区
+     *
+     * @return
+     */
+    public Status close() {
+        closed.set(true);
+        return doClose() ? Status.ok() : Status.ioError("doClose error");
+    }
+
+    public File getFile() {
+        return file;
+    }
 
     /**
      * 将缓冲区中的数据写入到文件中
@@ -114,16 +148,6 @@ public abstract class BaseWritableFile {
      * @return
      */
     protected abstract int doWrite(Slice data, int offset, int size);
-
-
-    /**
-     * 关闭并刷新缓冲区
-     *
-     * @return
-     */
-    public Status close() {
-        return doClose() ? Status.ok() : Status.ioError("doClose error");
-    }
 
     /**
      * 将数据同步写入文件并落盘，因为数据即使被write，也只是保存在pagecache中，存在数据丢失的风险

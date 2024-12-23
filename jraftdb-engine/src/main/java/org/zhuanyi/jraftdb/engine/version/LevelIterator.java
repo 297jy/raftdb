@@ -18,9 +18,9 @@
 package org.zhuanyi.jraftdb.engine.version;
 
 
-import org.zhuanyi.jraftdb.engine.utils.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 import org.zhuanyi.jraftdb.engine.comparator.InternalKeyComparator;
-import org.zhuanyi.jraftdb.engine.data.InternalKey;
+import org.zhuanyi.jraftdb.engine.dto.InternalKey;
 import org.zhuanyi.jraftdb.engine.iterator.AbstractSeekingIterator;
 import org.zhuanyi.jraftdb.engine.iterator.InternalIterator;
 import org.zhuanyi.jraftdb.engine.iterator.InternalTableIterator;

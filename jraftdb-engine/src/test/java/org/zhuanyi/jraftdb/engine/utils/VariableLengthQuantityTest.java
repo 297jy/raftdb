@@ -18,6 +18,8 @@
 package org.zhuanyi.jraftdb.engine.utils;
 
 import org.testng.annotations.Test;
+import org.zhuanyi.jraftdb.engine.utils.slice.SliceOutput;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slices;
 
 import static org.testng.Assert.assertEquals;
 
