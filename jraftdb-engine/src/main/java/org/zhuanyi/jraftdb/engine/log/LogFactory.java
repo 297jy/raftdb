@@ -24,7 +24,7 @@ public class LogFactory {
 
 
     public static LogRecordReader createLogReader(FileChannel fileChannel, LogMonitor logMonitor, long initialOffset) {
-        return new LogRecordReaderImpl(fileChannel, logMonitor, false, initialOffset);
+        return new LogRecordReaderImpl(fileChannel, logMonitor, true, initialOffset);
     }
 
 }

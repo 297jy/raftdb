@@ -187,7 +187,7 @@ public class LogRecordReaderImpl implements LogRecordReader {
             return BAD_CHUNK;
         }
 
-        if (chunkType == ZERO_TYPE && length > 0) {
+        if (chunkType == ZERO_TYPE && length == 0) {
             currentBlock = Slices.EMPTY_SLICE.input();
             return BAD_CHUNK;
         }

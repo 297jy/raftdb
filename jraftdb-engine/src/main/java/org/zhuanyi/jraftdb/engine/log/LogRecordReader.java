@@ -28,4 +28,5 @@ public interface LogRecordReader {
      * @return
      */
     Slice readRecord();
+
 }

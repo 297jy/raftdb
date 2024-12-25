@@ -126,7 +126,8 @@ public class LogTest {
         // test readRecord
         try (FileInputStream fis = new FileInputStream(writer.getWritableFile().getFile());
              FileChannel fileChannel = fis.getChannel()) {
-            LogReader reader = new LogReader(fileChannel, NO_CORRUPTION_MONITOR, true, 0);
+            LogRecordReader reader = LogFactory.createLogReader(fileChannel, NO_CORRUPTION_MONITOR, 0);
+            //LogReader reader = new LogReader(fileChannel, NO_CORRUPTION_MONITOR, true, 0);
             for (Slice expected : records) {
                 Slice actual = reader.readRecord();
                 assertEquals(actual, expected);

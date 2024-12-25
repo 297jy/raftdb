@@ -55,9 +55,9 @@ public class LogRecordWriterImpl implements LogRecordWriter {
                     //dest.append(new Slice(ByteBuffer.allocate(bytesRemainingInBlock)));
                 }
 
+                blockOffset = 0;
+                bytesRemainingInBlock = BLOCK_SIZE;
             }
-            blockOffset = 0;
-            bytesRemainingInBlock = BLOCK_SIZE;
 
             // 计算当前block中有多少空间可以存放log的data部分
             int bytesAvailableInBlock = bytesRemainingInBlock - HEADER_SIZE;
