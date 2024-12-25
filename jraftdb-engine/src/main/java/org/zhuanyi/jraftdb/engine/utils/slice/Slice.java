@@ -19,7 +19,6 @@ package org.zhuanyi.jraftdb.engine.utils.slice;
 
 import com.google.common.base.Preconditions;
 import org.zhuanyi.common.SizeOf;
-import org.zhuanyi.jraftdb.engine.utils.BasicSliceOutput;
 
 import java.io.IOException;
 import java.io.InputStream;

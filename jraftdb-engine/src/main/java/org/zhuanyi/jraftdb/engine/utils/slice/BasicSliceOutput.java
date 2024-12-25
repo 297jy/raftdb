@@ -15,11 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zhuanyi.jraftdb.engine.utils;
-
-import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
-import org.zhuanyi.jraftdb.engine.utils.slice.SliceInput;
-import org.zhuanyi.jraftdb.engine.utils.slice.SliceOutput;
+package org.zhuanyi.jraftdb.engine.utils.slice;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,7 +29,7 @@ public class BasicSliceOutput
     private final Slice slice;
     private int size;
 
-    protected BasicSliceOutput(Slice slice) {
+    public BasicSliceOutput(Slice slice) {
         this.slice = slice;
     }
 

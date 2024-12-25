@@ -20,8 +20,7 @@ package org.zhuanyi.jraftdb.engine.constant;
 
 import static org.zhuanyi.common.SizeOf.*;
 
-public final class LogConstants
-{
+public final class LogConstants {
     // todo find new home for these
 
     public static final int BLOCK_SIZE = 32768;
@@ -29,7 +28,6 @@ public final class LogConstants
     // Header is checksum (4 bytes), type (1 byte), length (2 bytes).
     public static final int HEADER_SIZE = SIZE_OF_INT + SIZE_OF_BYTE + SIZE_OF_SHORT;
 
-    private LogConstants()
-    {
+    private LogConstants() {
     }
 }

@@ -6,6 +6,8 @@ import org.zhuanyi.jraftdb.engine.utils.file.BaseWritableFile;
 import org.zhuanyi.jraftdb.engine.utils.slice.SliceOutput;
 import org.zhuanyi.jraftdb.engine.utils.slice.Slices;
 
+import java.nio.ByteBuffer;
+
 import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkState;
 import static org.zhuanyi.jraftdb.engine.constant.LogConstants.BLOCK_SIZE;
@@ -20,17 +22,22 @@ public class LogRecordWriterImpl implements LogRecordWriter {
 
     private int blockOffset;
 
-    private static final Slice[] BLOCK_PADDING_ARR = new Slice[6];
+    private static final Slice[] BLOCK_PADDING_ARR = new Slice[7];
 
     static {
         for (int i = 0; i < BLOCK_PADDING_ARR.length; i++) {
-            BLOCK_PADDING_ARR[i] = new Slice(i + 1);
+            BLOCK_PADDING_ARR[i] = new Slice(i);
         }
     }
 
     public LogRecordWriterImpl(BaseWritableFile dest) {
         this.dest = dest;
         this.blockOffset = 0;
+    }
+
+    @Override
+    public BaseWritableFile getWritableFile() {
+        return dest;
     }
 
     @Override
@@ -43,7 +50,11 @@ public class LogRecordWriterImpl implements LogRecordWriter {
             checkState(bytesRemainingInBlock >= 0);
             // 如果剩余的空间连block的header部分都放不下，那需要用0把当前的block剩余空间填完，因为每个block都是32KB对齐的
             if (bytesRemainingInBlock < HEADER_SIZE) {
-                dest.append(BLOCK_PADDING_ARR[bytesRemainingInBlock - 1]);
+                if (bytesRemainingInBlock > 0) {
+                    dest.append(BLOCK_PADDING_ARR[bytesRemainingInBlock]);
+                    //dest.append(new Slice(ByteBuffer.allocate(bytesRemainingInBlock)));
+                }
+
             }
             blockOffset = 0;
             bytesRemainingInBlock = BLOCK_SIZE;

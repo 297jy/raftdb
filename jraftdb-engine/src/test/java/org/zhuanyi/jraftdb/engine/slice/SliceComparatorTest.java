@@ -15,16 +15,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.zhuanyi.common;
+package org.zhuanyi.jraftdb.engine.slice;
 
 import org.testng.annotations.Test;
-import org.zhuanyi.common.Slice;
-import org.zhuanyi.common.Slices;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
+import org.zhuanyi.jraftdb.engine.utils.slice.Slices;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
-import static org.zhuanyi.common.SliceComparator.SLICE_COMPARATOR;
+import static org.zhuanyi.jraftdb.engine.utils.SliceComparator.SLICE_COMPARATOR;
 
 public class SliceComparatorTest {
     @Test

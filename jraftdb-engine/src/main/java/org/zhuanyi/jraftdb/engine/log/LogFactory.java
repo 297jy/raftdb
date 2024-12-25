@@ -6,6 +6,7 @@ import org.zhuanyi.jraftdb.engine.utils.file.MMapWritableFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
 
 /**
  * Log相关的factory
@@ -19,6 +20,11 @@ public class LogFactory {
         } else {
             return new LogRecordWriterImpl(new FileChannelWritableFile(file, fileNumber));
         }
+    }
+
+
+    public static LogRecordReader createLogReader(FileChannel fileChannel, LogMonitor logMonitor, long initialOffset) {
+        return new LogRecordReaderImpl(fileChannel, logMonitor, false, initialOffset);
     }
 
 }

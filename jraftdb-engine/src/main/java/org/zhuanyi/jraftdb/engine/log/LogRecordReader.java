@@ -18,16 +18,14 @@
 package org.zhuanyi.jraftdb.engine.log;
 
 
-import org.zhuanyi.jraftdb.engine.utils.file.BaseWritableFile;
 import org.zhuanyi.jraftdb.engine.utils.slice.Slice;
 
 
-import java.io.IOException;
+public interface LogRecordReader {
 
-public interface LogRecordWriter {
-
-    BaseWritableFile getWritableFile();
-
-    // Writes a stream of chunks such that no chunk is split across a block boundary
-    void addRecord(Slice record) throws IOException;
+    /**
+     * 读取log
+     * @return
+     */
+    Slice readRecord();
 }
